@@ -9,3 +9,8 @@ export interface Image {
   urls: ImageUrls;
   color: string;
 }
+
+export interface responseData {
+  total_pages: number;
+  results: Image[];
+}

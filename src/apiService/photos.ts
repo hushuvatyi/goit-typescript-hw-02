@@ -1,4 +1,5 @@
 import axios from "axios";
+import { responseData } from "../types/responseTypes";
 
 const ACCESS_KEY = "hB493Cs6NUmVxN-E_7WNUD3xrv1IqKdNZJCNnxC_AXk";
 
@@ -12,13 +13,16 @@ axios.defaults.params = {
   orientation: "landscape",
 };
 
-export const getPhotos = async (query: string, page: number) => {
+export const getPhotos = async (
+  query: string,
+  page: number
+): Promise<responseData> => {
   const { data } = await axios.get("/search/photos", {
     params: {
       query,
       page,
     },
   });
-
+  // console.log(data);
   return data;
 };

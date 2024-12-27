@@ -38,12 +38,12 @@ export const App = () => {
       setIsLoading(true);
 
       try {
-        const response = await getPhotos(query, page);
-        if (!response.results.length) {
+        const { results, total_pages } = await getPhotos(query, page);
+        if (!results.length) {
           return setIsEmpty(true);
         }
-        setImages((prevImages) => [...prevImages, ...response.results]);
-        setIsVisible(page < response.total_pages);
+        setImages((prevImages) => [...prevImages, ...results]);
+        setIsVisible(page < total_pages);
       } catch (error) {
         setError("Something went wrong - reload your page!");
       } finally {
