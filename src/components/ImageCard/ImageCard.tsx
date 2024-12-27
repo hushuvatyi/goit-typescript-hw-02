@@ -1,7 +1,20 @@
+import { ImageUrls } from "../../types/responseTypes";
 import { GridItem } from "../GridItem/GridItem";
 import css from "./ImageCard.module.css";
 
-export const ImageCard = ({ urls, alt, avg_color, openModal }) => {
+type Props = {
+  alt: string;
+  urls: ImageUrls;
+  avg_color: string;
+  openModal: (src: string, alt: string) => void;
+};
+
+export const ImageCard: React.FC<Props> = ({
+  urls,
+  alt,
+  avg_color,
+  openModal,
+}) => {
   return (
     <>
       <GridItem>
